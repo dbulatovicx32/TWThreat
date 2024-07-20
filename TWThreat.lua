@@ -39,7 +39,7 @@ TWT.class = __lower(cl)
 TWT.lastAggroWarningSoundTime = 0
 TWT.lastAggroWarningGlowTime = 0
 
-TWT.AGRO = '-Pull Aggro at-'
+-- TWT.AGRO = '-Pull Aggro at-'
 TWT.threatsFrames = {}
 
 TWT.threats = {}
@@ -103,7 +103,7 @@ TWT.fonts = {
     'Expressway', 'Homespun', 'Hooge', 'LondrinaSolid',
     'Myriad-Pro', 'PT-Sans-Narrow-Bold', 'PT-Sans-Narrow-Regular',
     'Roboto', 'Share', 'ShareBold',
-    'Sniglet', 'SquadaOne',
+    'Sniglet', 'SquadaOne','AccidentalPresidency'
 }
 
 
@@ -840,26 +840,26 @@ function TWT.calcAGROPerc()
         end
     end
 
-    TWT.threats[TWT.AGRO] = {
-        class = 'agro',
-        threat = 0,
-        perc = 100,
-        tps = '',
-        history = {},
-        tank = false,
-        melee = false
-    }
+    -- TWT.threats[TWT.AGRO] = {
+    --     class = 'agro',
+    --     threat = 0,
+    --     perc = 100,
+    --     tps = '',
+    --     history = {},
+    --     tank = false,
+    --     melee = false
+    -- }
 
     if not TWT.threats[TWT.name] then
         twtdebug('threats de name is bad')
         return false
     end
 
-    TWT.threats[TWT.AGRO].threat = tankThreat * (TWT.threats[TWT.name].melee and 1.1 or 1.3)
-    if TWT.threats[TWT.AGRO].threat == 0 then
-        TWT.threats[TWT.AGRO].threat = 1
-    end
-    TWT.threats[TWT.AGRO].perc = TWT.threats[TWT.name].melee and 110 or 130
+    -- TWT.threats[TWT.AGRO].threat = tankThreat * (TWT.threats[TWT.name].melee and 1.1 or 1.3)
+    -- if TWT.threats[TWT.AGRO].threat == 0 then
+    --     TWT.threats[TWT.AGRO].threat = 1
+    -- end
+    -- TWT.threats[TWT.AGRO].perc = TWT.threats[TWT.name].melee and 110 or 130
 
 end
 
@@ -1184,13 +1184,18 @@ function TWT.updateUI(from)
             _G['TWThreat' .. index]:SetAlpha(TWT_CONFIG.combatAlpha)
             _G['TWThreat' .. index]:SetWidth(TWT.windowWidth - 2)
 
-            _G['TWThreat' .. index .. 'Name']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
-            _G['TWThreat' .. index .. 'TPS']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
-            _G['TWThreat' .. index .. 'Threat']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
-            _G['TWThreat' .. index .. 'Perc']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
+            -- _G['TWThreat' .. index .. 'Name']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
+            -- _G['TWThreat' .. index .. 'TPS']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
+            -- _G['TWThreat' .. index .. 'Threat']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
+            -- _G['TWThreat' .. index .. 'Perc']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15, "OUTLINE")
 
+            _G['TWThreat' .. index .. 'Name']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15)
+            _G['TWThreat' .. index .. 'TPS']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15)
+            _G['TWThreat' .. index .. 'Threat']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15)
+            _G['TWThreat' .. index .. 'Perc']:SetFont("Interface\\addons\\TWThreat\\fonts\\" .. TWT_CONFIG.font .. ".ttf", 15)
+            
             _G['TWThreat' .. index]:SetHeight(TWT_CONFIG.barHeight - 1)
-            _G['TWThreat' .. index .. 'BG']:SetHeight(TWT_CONFIG.barHeight - 2)
+            _G['TWThreat' .. index .. 'BG']:SetHeight(TWT_CONFIG.barHeight)
 
             TWT.threatsFrames[index]:ClearAllPoints()
             TWT.threatsFrames[index]:SetPoint("TOPLEFT", _G["TWTMain"], "TOPLEFT", 0,
@@ -1199,43 +1204,45 @@ function TWT.updateUI(from)
 
 
             -- icons
-            _G['TWThreat' .. index .. 'AGRO']:Hide()
-            _G['TWThreat' .. index .. 'Role']:Show()
-            if name ~= TWT.AGRO then
+            -- _G['TWThreat' .. index .. 'AGRO']:Hide()
+            -- _G['TWThreat' .. index .. 'Role']:Show()
+            -- if name ~= TWT.AGRO then
 
-                _G['TWThreat' .. index .. 'Role']:SetWidth(TWT_CONFIG.barHeight - 2)
-                _G['TWThreat' .. index .. 'Role']:SetHeight(TWT_CONFIG.barHeight - 2)
-                _G['TWThreat' .. index .. 'Name']:SetPoint('LEFT', _G['TWThreat' .. index .. 'Role'], 'RIGHT', 1 + (TWT_CONFIG.barHeight / 15), -1)
-                if TWT.roles[name] then
-                    _G['TWThreat' .. index .. 'Role']:SetTexture('Interface\\Icons\\' .. TWT.roles[name])
-                    _G['TWThreat' .. index .. 'Role']:SetTexCoord(0.08, 0.92, 0.08, 0.92)
-                    _G['TWThreat' .. index .. 'Role']:Show()
-                else
-                    _G['TWThreat' .. index .. 'Role']:SetTexture('Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes')
-                    _G['TWThreat' .. index .. 'Role']:SetTexCoord(unpack(TWT.classCoords[data.class]))
-                end
+            --     _G['TWThreat' .. index .. 'Role']:SetWidth(TWT_CONFIG.barHeight - 2)
+            --     _G['TWThreat' .. index .. 'Role']:SetHeight(TWT_CONFIG.barHeight - 2)
+            --     _G['TWThreat' .. index .. 'Name']:SetPoint('LEFT', _G['TWThreat' .. index .. 'Role'], 'RIGHT', 1 + (TWT_CONFIG.barHeight / 15), -1)
+            --     if TWT.roles[name] then
+            --         _G['TWThreat' .. index .. 'Role']:SetTexture('Interface\\Icons\\' .. TWT.roles[name])
+            --         _G['TWThreat' .. index .. 'Role']:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+            --         _G['TWThreat' .. index .. 'Role']:Show()
+            --     else
+            --         _G['TWThreat' .. index .. 'Role']:SetTexture('Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes')
+            --         _G['TWThreat' .. index .. 'Role']:SetTexCoord(unpack(TWT.classCoords[data.class]))
+            --     end
+            --         _G['TWThreat' .. index .. 'Role']:Hide() -- EIR CUSTOM - hide class icons...
+            -- else
+            --     _G['TWThreat' .. index .. 'AGRO']:Show()
+            --     _G['TWThreat' .. index .. 'Role']:Hide()
+            -- end
 
-            else
-                _G['TWThreat' .. index .. 'AGRO']:Show()
-                _G['TWThreat' .. index .. 'Role']:Hide()
-            end
-
+            local classColor = TWT.classColors[data.class].c
 
             -- tps
-            _G['TWThreat' .. index .. 'TPS']:SetText(data.tps)
+            _G['TWThreat' .. index .. 'TPS']:SetText(classColor .. data.tps)
 
             -- labels
             TWT.setBarLabels(_G['TWThreat' .. index .. 'Perc'], _G['TWThreat' .. index .. 'Threat'], _G['TWThreat' .. index .. 'TPS'])
 
             -- perc
-            _G['TWThreat' .. index .. 'Perc']:SetText(TWT.round(data.perc) .. '%')
+            _G['TWThreat' .. index .. 'Perc']:SetText(classColor .. TWT.round(data.perc) .. '%')
 
             if TWT.name ~= TWT.tankName and name == TWT.AGRO then
-                _G['TWThreat' .. index .. 'Perc']:SetText(100 - TWT.round(TWT.threats[TWT.name].perc) .. '%')
+                _G['TWThreat' .. index .. 'Perc']:SetText(classColor .. 100 - TWT.round(TWT.threats[TWT.name].perc) .. '%')
             end
 
             -- name
-            _G['TWThreat' .. index .. 'Name']:SetText(TWT.classColors['priest'].c .. name)
+            -- _G['TWThreat' .. index .. 'Name']:SetText(TWT.classColors['priest'].c .. name)
+            _G['TWThreat' .. index .. 'Name']:SetText(classColor .. index .. ". " .. classColor .. name)
 
             -- bar width and color
             local color = TWT.classColors[data.class]
@@ -1271,32 +1278,33 @@ function TWT.updateUI(from)
 
                 if data.perc == 0 then TWT.barAnimator:animateTo(index, empty) else TWT.barAnimator:animateTo(index, data.perc) end
 
-            elseif name == TWT.AGRO then
+            -- elseif name == TWT.AGRO then
 
-                TWT.barAnimator:animateTo(index, nil)
+            --     TWT.barAnimator:animateTo(index, nil)
 
-                _G['TWThreat' .. index .. 'BG']:SetWidth(TWT.windowWidth - 2)
-                _G['TWThreat' .. index .. 'Threat']:SetText('+' .. TWT.formatNumber(data.threat - TWT.threats[TWT.name].threat))
+            --     _G['TWThreat' .. index .. 'BG']:SetWidth(TWT.windowWidth - 2)
+            --     _G['TWThreat' .. index .. 'Threat']:SetText('+' .. TWT.formatNumber(data.threat - TWT.threats[TWT.name].threat))
 
-                local colorLimit = 50
+            --     local colorLimit = 50
 
-                if TWT.threats[TWT.name].perc >= 0 and TWT.threats[TWT.name].perc < colorLimit then
-                    _G['TWThreat' .. index .. 'BG']:SetVertexColor(TWT.threats[TWT.name].perc / colorLimit, 1, 0, 0.9)
-                elseif TWT.threats[TWT.name].perc >= colorLimit then
-                    _G['TWThreat' .. index .. 'BG']:SetVertexColor(1, 1 - (TWT.threats[TWT.name].perc - colorLimit) / colorLimit, 0, 0.9)
-                end
+            --     if TWT.threats[TWT.name].perc >= 0 and TWT.threats[TWT.name].perc < colorLimit then
+            --         _G['TWThreat' .. index .. 'BG']:SetVertexColor(TWT.threats[TWT.name].perc / colorLimit, 1, 0, 0.9)
+            --     elseif TWT.threats[TWT.name].perc >= colorLimit then
+            --         _G['TWThreat' .. index .. 'BG']:SetVertexColor(1, 1 - (TWT.threats[TWT.name].perc - colorLimit) / colorLimit, 0, 0.9)
+            --     end
 
-                if TWT.tankName == TWT.name then
-                    _G['TWThreat' .. index .. 'BG']:SetVertexColor(1, 0, 0, 1)
-                    _G['TWThreat' .. index .. 'Perc']:SetText('')
-                end
+            --     if TWT.tankName == TWT.name then
+            --         _G['TWThreat' .. index .. 'BG']:SetVertexColor(1, 0, 0, 1)
+            --         _G['TWThreat' .. index .. 'Perc']:SetText('')
+            --     end
 
             else
 
                 TWT.barAnimator:animateTo(index, data.perc)
 
                 _G['TWThreat' .. index .. 'Threat']:SetText(TWT.formatNumber(data.threat))
-                _G['TWThreat' .. index .. 'BG']:SetVertexColor(color.r, color.g, color.b, 0.9)
+                _G['TWThreat' .. index .. 'BG']:SetVertexColor(0.23, 0.23, 0.23, 1) -- EIR CUSTOM - hardcode bar color
+                -- _G['TWThreat' .. index .. 'BG']:SetVertexColor(color.r, color.g, color.b, 0.9)
             end
 
             if data.tank then
@@ -1310,7 +1318,11 @@ function TWT.updateUI(from)
                 TWT.updateTargetFrameThreatIndicators(data.perc)
             end
 
-            TWT.threatsFrames[index]:Show()
+            -- if name == TWT.AGRO then
+            --     TWT.threatsFrames[index]:Hide()
+            -- else
+                TWT.threatsFrames[index]:Show()
+            -- end
 
         end
 
@@ -1977,10 +1989,10 @@ function TWT.testBars(show)
         TWT.roles['Tom'] = 'spell_shadow_shadowbolt'
         TWT.roles['Bill'] = 'ability_marksmanship'
         TWT.threats = {
-            [TWT.AGRO] = {
-                class = 'agro', threat = 1100, perc = 110, tps = '',
-                history = {}, melee = true, tank = false
-            },
+            -- [TWT.AGRO] = {
+            --     class = 'agro', threat = 1100, perc = 110, tps = '',
+            --     history = {}, melee = true, tank = false
+            -- },
             ['Tenk'] = {
                 class = 'warrior', threat = 1000, perc = 100, tps = 100,
                 history = {}, melee = true, tank = true },
@@ -2262,7 +2274,8 @@ end
 
 function TWT.updateTitleBarText(text)
     if not text then
-        _G['TWTMainTitle']:SetText(TWT.addonName .. ' |cffabd473v' .. TWT.addonVer)
+        -- _G['TWTMainTitle']:SetText(TWT.addonName .. ' |cffabd473v' .. TWT.addonVer)
+        _G['TWTMainTitle']:SetText('') -- EIR CUSTOM - hide TWT Version header
         return true
     end
     _G['TWTMainTitle']:SetText(text)

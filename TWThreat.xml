@@ -15,7 +15,7 @@
         </Anchors>
         <Layers>
             <Layer level="BACKGROUND">
-                <Texture name="$parentBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="24"/>
                     </Size>
@@ -113,7 +113,7 @@
     <Button name="TWTFontFrameTemplate" inherits="UIPanelButtonTemplate" virtual="true">
         <NormalTexture/>
         <PushedTexture/>
-        <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\Smooth" alphaMode="ADD"/>
+        <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\pfUI" alphaMode="ADD"/>
         <Size>
             <AbsDimension x="140" y="16"/>
         </Size>
@@ -160,7 +160,7 @@
         </Anchors>
         <Layers>
             <Layer level="BACKGROUND">
-                <Texture name="$parentBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="18"/>
                     </Size>
@@ -190,7 +190,7 @@
                     </Anchors>
                 </Texture>
 
-                <Texture name="$parentRole" file="" hidden="true">
+                <!-- <Texture name="$parentRole" file="" hidden="true">
                     <Size>
                         <AbsDimension x="24" y="24"/>
                     </Size>
@@ -202,7 +202,7 @@
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </Texture>
+                </Texture> -->
 
                 <FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="LEFT" text="Name">
                     <Size>
@@ -211,7 +211,7 @@
                     <Anchors>
                         <Anchor point="LEFT">
                             <Offset>
-                                <AbsDimension x="20" y="-1"/>
+                                <AbsDimension x="10" y="1"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -224,7 +224,7 @@
                     <Anchors>
                         <Anchor point="RIGHT">
                             <Offset>
-                                <AbsDimension x="-5" y="0"/>
+                                <AbsDimension x="-5" y="1"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -237,7 +237,7 @@
                     <Anchors>
                         <Anchor point="RIGHT" relativeTo="$parentPerc" relativePoint="LEFT">
                             <Offset>
-                                <AbsDimension x="0" y="0"/>
+                                <AbsDimension x="0" y="1"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -250,7 +250,7 @@
                     <Anchors>
                         <Anchor point="RIGHT" relativeTo="$parentThreat" relativePoint="LEFT">
                             <Offset>
-                                <AbsDimension x="0" y="0"/>
+                                <AbsDimension x="0" y="1"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -332,7 +332,7 @@
         </Anchors>
         <Layers>
             <Layer level="ARTWORK">
-                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="20"/>
                     </Size>
@@ -615,7 +615,7 @@
         </Anchors>
         <Layers>
             <Layer level="ARTWORK">
-                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="20"/>
                     </Size>
@@ -642,7 +642,7 @@
                     </Anchors>
                 </FontString>
 
-                <Texture name="$parentTabsUnderline" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentTabsUnderline" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="1"/>
                     </Size>
@@ -690,9 +690,9 @@
             </Button>
 
             <Button name="$parentTab1Button" inherits="UIPanelButtonTemplate" text="General" id="1">
-                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                 <Size>
                     <AbsDimension x="80" y="22"/>
                 </Size>
@@ -711,9 +711,9 @@
             </Button>
 
             <Button name="$parentTab2Button" inherits="UIPanelButtonTemplate" text="Bars" id="2">
-                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                 <Size>
                     <AbsDimension x="80" y="22"/>
                 </Size>
@@ -732,9 +732,9 @@
             </Button>
 
             <Button name="$parentTab3Button" inherits="UIPanelButtonTemplate" text="Integration" id="3">
-                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
-                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
+                <HighlightTexture name="$parentHT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                 <Size>
                     <AbsDimension x="80" y="22"/>
                 </Size>
@@ -967,10 +967,10 @@
 
                     <Button name="TWTMainSettingsHealerMasterTargetButton" inherits="UIPanelButtonTemplate"
                             text="From Target" hidden="true">
-                        <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth"
+                        <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI"
                                        alphaMode="ADD">
                         </NormalTexture>
-                        <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                        <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                         <HighlightTexture/>
                         <Size>
                             <AbsDimension x="140" y="16"/>
@@ -1227,10 +1227,10 @@
                 <Frames>
 
                     <Button name="TWTMainSettingsFontButton" inherits="UIPanelButtonTemplate" text="Font">
-                        <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth"
+                        <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI"
                                        alphaMode="ADD">
                         </NormalTexture>
-                        <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                        <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                         <HighlightTexture/>
                         <Size>
                             <AbsDimension x="140" y="16"/>
@@ -2020,7 +2020,7 @@
         </Anchors>
         <Layers>
             <Layer level="ARTWORK">
-                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="20"/>
                     </Size>
@@ -2392,7 +2392,7 @@
         </Backdrop>
         <Layers>
             <Layer level="ARTWORK">
-                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\Smooth">
+                <Texture name="$parentTitleBG" file="Interface\addons\TWThreat\images\textures\pfUI">
                     <Size>
                         <AbsDimension x="298" y="20"/>
                     </Size>
@@ -2433,9 +2433,9 @@
         </Layers>
         <Frames>
             <Button name="$parentRefreshButton" inherits="UIPanelButtonTemplate" text="Refresh">
-                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth" alphaMode="ADD">
+                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI" alphaMode="ADD">
                 </NormalTexture>
-                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                 <HighlightTexture/>
                 <Size>
                     <AbsDimension x="16" y="16"/>
@@ -2459,9 +2459,9 @@
                 </Scripts>
             </Button>
             <Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="x">
-                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\Smooth" alphaMode="ADD">
+                <NormalTexture name="$parentNT" file="Interface\addons\TWThreat\images\textures\pfUI" alphaMode="ADD">
                 </NormalTexture>
-                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\Smooth"/>
+                <PushedTexture name="$parentPT" file="Interface\addons\TWThreat\images\textures\pfUI"/>
                 <HighlightTexture/>
                 <Size>
                     <AbsDimension x="16" y="16"/>
